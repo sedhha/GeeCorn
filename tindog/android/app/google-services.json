@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "120286568202",
+    "firebase_url": "https://tindog-da04a.firebaseio.com",
+    "project_id": "tindog-da04a",
+    "storage_bucket": "tindog-da04a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120286568202:android:216552489139132ff5e4f3",
+        "android_client_info": {
+          "package_name": "nextgenerationairportfacilities.tindog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120286568202-48l9sqaa886gjll4i24it74ejpvgir8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nextgenerationairportfacilities.tindog",
+            "certificate_hash": "c00f9610a11b64acf4e797b46aae2d82de0d40e3"
+          }
+        },
+        {
+          "client_id": "120286568202-d7gsp6o9k0sn0ade32mm9fauodu67ps3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiVSsnNMD-R9VfovDJRDAdrsImtYZH0r0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120286568202-d7gsp6o9k0sn0ade32mm9fauodu67ps3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

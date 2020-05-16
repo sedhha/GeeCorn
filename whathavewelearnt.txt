@@ -1,0 +1,4 @@
+What have I learnt?
+Center Widget
+Transparent Login
+TextField Properties: Label Text Color
