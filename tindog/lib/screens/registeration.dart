@@ -15,9 +15,13 @@ class _RegisterSState extends State<RegisterS> {
   @override
   List<Widget> RowEntries=[];
   List<Widget> ColumnEntries=[];
+  bool Flag=false;
+  List<Widget> ColumnEntriesWhenRow=[];
   int RowNumber=0;
   int ColumnNumber=0;
+  int skillCount=0;
   String SkillEntered="";
+  List<String> TextsCollected=[];
   createAlertdialog(BuildContext context)
   {
     return showDialog(context: context,builder: (context){
@@ -26,8 +30,80 @@ class _RegisterSState extends State<RegisterS> {
       );
     });
   }
-  void UpdateRowsAndColumns()
-  {}
+  List<Widget> AppendRows(String TextData,List<Widget> Ros)
+  {
+    Ros.add(Text(TextData));
+    Ros.add(SizedBox(width: 5,));
+    return Ros;
+  }
+  List<Widget> AppendColumns(int Counter,List<String> TextsCollected)
+  {
+    List<Widget> ColumnList=[];
+    Widget RowFormation;
+    List<Widget> RowWid=[];
+      for(int i=0;i<Counter;i++)
+      {
+        //print("Modulo of ${i+1} by${3} is ${(i+1)%3}");
+        if((i+1)%3==0)
+      {
+        RowWid.add(Container(
+          height: 32,
+          child: FlatButton(
+            color: Colors.white,
+            shape:RoundedRectangleBorder(
+                borderRadius:BorderRadius.circular(10.0)),
+            textColor: Color(0xff055E98),
+            disabledColor: Colors.grey,
+            disabledTextColor: Colors.black,
+            padding: EdgeInsets.all(8.0),
+            splashColor: Colors.white70,
+            onPressed: () {
+
+            },
+            child: Text(
+              TextsCollected[i],
+              style: TextStyle(fontSize: 14.0,),
+            ),
+          ),
+        ),);
+        //RowWid.add(Text(TextsCollected[i]));
+        RowWid.add(SizedBox(width: 5,));
+        RowFormation=Row(children: RowWid,);
+        ColumnList.add(RowFormation);
+        ColumnList.add(SizedBox(height: 3,));
+        //print(ColumnList.length);
+        RowWid=[];
+      }
+    else
+      {
+        RowWid.add(Container(
+          height: 32,
+          child: FlatButton(
+            color: Colors.white,
+            shape:RoundedRectangleBorder(
+                borderRadius:BorderRadius.circular(10.0)),
+            textColor: Color(0xff055E98),
+            disabledColor: Colors.grey,
+            disabledTextColor: Colors.black,
+            padding: EdgeInsets.all(8.0),
+            splashColor: Colors.white70,
+            onPressed: () {
+
+            },
+            child: Text(
+              TextsCollected[i],
+              style: TextStyle(fontSize: 14.0,),
+            ),
+          ),
+        ),);
+        RowWid.add(SizedBox(width: 5,));
+      }}
+      ColumnList.add(Row(children: RowWid,));
+      ColumnList.add(SizedBox(height: 3,));
+      return ColumnList;
+
+
+  }
   Widget build(BuildContext context) {
     Widget StartTyping=Container(
       margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
@@ -71,7 +147,16 @@ class _RegisterSState extends State<RegisterS> {
             padding: EdgeInsets.all(8.0),
             splashColor: Colors.white70,
             onPressed: () {
-              print("Skills adding @$SkillEntered");
+              skillCount+=1;
+              if(skillCount>12){print("Break Operation");}
+              else{
+              RowEntries=AppendRows(SkillEntered, RowEntries);
+              TextsCollected.add(SkillEntered);
+              //print(TextsCollected);
+              setState(() {
+                ColumnEntries=AppendColumns(skillCount,TextsCollected);
+              });
+              }
             },
             child: Text(
               "Add",
@@ -99,7 +184,7 @@ class _RegisterSState extends State<RegisterS> {
               margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
               width: double.infinity,
               height:150,
-              child: Column(children: <Widget>[],),
+              child: Column(children: ColumnEntries,),
               //color: Colors.red,
             ),
             SizedBox(height: 5,),
